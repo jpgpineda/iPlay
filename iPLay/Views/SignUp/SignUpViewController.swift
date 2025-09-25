@@ -12,7 +12,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
-    let viewModel: SignUpViewModel
+    var viewModel: SignUpViewModel
     
     init(viewModel: SignUpViewModel) {
         self.viewModel = viewModel
@@ -26,17 +26,18 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.requestLogin()
-        
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
     @IBAction func requestSignUp(_ sender: UIButton) {
-        if viewModel.validateFields() {
-            print("Hacer Login")
-        } else {
-            print("Hubo un error")
-        }
+        print("Hacer login")
+        viewModel.requestLogin()
+    }
+    
+    func validateFields() {
+        signUpButton.isEnabled = viewModel.validateFields()
     }
 }
 
@@ -44,8 +45,30 @@ extension SignUpViewController: SignUpView {
     func showFAilureMessage() {
         
     }
-    
     func showLoader() {
         
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            guard let text = emailTextField.text else {
+                return false
+            }
+            viewModel.email = text
+        } else {
+            guard let text = passwordTextField.text else {
+                return false
+            }
+            viewModel.password = text
+        }
+        
+        validateFields()
+        return true
     }
 }

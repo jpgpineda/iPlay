@@ -34,6 +34,6 @@ class SignUpViewModelImplementation: SignUpViewModel {
     }
     
     func validateFields() -> Bool {
-        return !email.isEmpty && !password.isEmpty
+        return (!email.isEmpty && email.isValidEmail()) && (!password.isEmpty && password.isValidPassword())
     }
 }
