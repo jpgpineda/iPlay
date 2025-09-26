@@ -39,6 +39,8 @@ class SignUpViewModelImplementation: SignUpViewModel {
             return !email.isEmpty && email.isValidEmail()
         case .password:
             return !password.isEmpty && password.isValidPassword()
+        case .button:
+           return (!email.isEmpty && email.isValidEmail()) && (!password.isEmpty && password.isValidPassword())
         }
     }
 }
@@ -46,4 +48,5 @@ class SignUpViewModelImplementation: SignUpViewModel {
 enum SignUpFields {
     case email
     case password
+    case button
 }

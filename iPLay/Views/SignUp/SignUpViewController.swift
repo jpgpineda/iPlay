@@ -10,7 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: FloatingLabeledTextField!
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var signUpButton: IPlayButton!
     @IBOutlet weak var passwordTextField: FloatingLabeledTextField!
     var viewModel: SignUpViewModel
     
@@ -39,7 +39,7 @@ class SignUpViewController: UIViewController {
     func validateFields() {
         emailTextField.isValid = viewModel.validateFields(type: .email)
         passwordTextField.isValid = viewModel.validateFields(type: .password)
-        //signUpButton.isEnabled = viewModel.validateFields()
+        signUpButton.isActive = viewModel.validateFields(type: .button)
     }
 }
 

@@ -48,6 +48,7 @@ class FloatingLabeledTextField: UITextField {
         layer.borderWidth = borderWidthValue
         layer.cornerRadius = borderCornerRadius
         layer.borderColor = inactiveBorderColor.cgColor
+        self.heightAnchor.constraint(equalToConstant: 40).isActive = true
         clipsToBounds = false // allow labels (if put in same superview) to be visible
 
         // Floating label setup
