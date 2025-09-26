@@ -10,6 +10,7 @@ import UIKit
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var TestTextField: FloatingLabeledTextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     var viewModel: SignUpViewModel
@@ -28,6 +29,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        TestTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -52,6 +54,8 @@ extension SignUpViewController: SignUpView {
 
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        TestTextField.isValid = false
         return true
     }
     
