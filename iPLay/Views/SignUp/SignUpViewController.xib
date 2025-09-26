@@ -10,9 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUpViewController" customModule="iPLay" customModuleProvider="target">
             <connections>
-                <outlet property="emailTextField" destination="rrk-wy-fHs" id="pxr-fg-duL"/>
-                <outlet property="passwordTextField" destination="0Qj-pr-tb6" id="iri-33-z5b"/>
-                <outlet property="signUpButton" destination="SBm-sy-vQw" id="9Pq-hD-C2c"/>
+                <outlet property="emailTextField" destination="rrk-wy-fHs" id="v64-FI-5rj"/>
+                <outlet property="passwordTextField" destination="0Qj-pr-tb6" id="9SJ-EC-1Oq"/>
+                <outlet property="signUpButton" destination="SBm-sy-vQw" id="hWd-Tt-iRk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,6 +21,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4BG-Ut-ZwV">
+                    <rect key="frame" x="111" y="267" width="97" height="34"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U20-YS-uLv">
                     <rect key="frame" x="0.0" y="148" width="320" height="420"/>
                     <subviews>
@@ -28,14 +34,20 @@
                             <rect key="frame" x="16" y="32" width="288" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="errorMessage" value="Correo invalido"/>
+                            </userDefinedRuntimeAttributes>
                         </textField>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Qj-pr-tb6" customClass="FloatingLabeledTextField" customModule="iPLay" customModuleProvider="target">
-                            <rect key="frame" x="16" y="98" width="288" height="34"/>
+                            <rect key="frame" x="16" y="106" width="288" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
+                            <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="errorMessage" value="Contraseña invalida"/>
+                            </userDefinedRuntimeAttributes>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SBm-sy-vQw">
-                            <rect key="frame" x="16" y="164" width="288" height="40"/>
+                            <rect key="frame" x="16" y="172" width="288" height="40"/>
                             <color key="backgroundColor" systemColor="systemPinkColor"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="XGG-pU-ucT"/>
@@ -53,7 +65,7 @@
                         <constraint firstItem="rrk-wy-fHs" firstAttribute="leading" secondItem="U20-YS-uLv" secondAttribute="leading" constant="16" id="2t7-8P-tGv"/>
                         <constraint firstItem="SBm-sy-vQw" firstAttribute="top" secondItem="0Qj-pr-tb6" secondAttribute="bottom" constant="32" id="AGh-08-e0V"/>
                         <constraint firstItem="0Qj-pr-tb6" firstAttribute="leading" secondItem="U20-YS-uLv" secondAttribute="leading" constant="16" id="UIT-XX-oCv"/>
-                        <constraint firstItem="0Qj-pr-tb6" firstAttribute="top" secondItem="rrk-wy-fHs" secondAttribute="bottom" constant="32" id="XKN-AQ-wA2"/>
+                        <constraint firstItem="0Qj-pr-tb6" firstAttribute="top" secondItem="rrk-wy-fHs" secondAttribute="bottom" constant="40" id="XKN-AQ-wA2"/>
                         <constraint firstAttribute="trailing" secondItem="SBm-sy-vQw" secondAttribute="trailing" constant="16" id="dLL-WV-oSg"/>
                         <constraint firstItem="SBm-sy-vQw" firstAttribute="leading" secondItem="U20-YS-uLv" secondAttribute="leading" constant="16" id="iJZ-0J-T92"/>
                         <constraint firstAttribute="trailing" secondItem="rrk-wy-fHs" secondAttribute="trailing" constant="16" id="s8d-Xh-BqE"/>

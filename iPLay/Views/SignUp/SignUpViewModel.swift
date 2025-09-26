@@ -17,7 +17,7 @@ protocol SignUpViewModel {
     var password: String { get set }
     func attachView(_ view: SignUpView)
     func requestLogin()
-    func validateFields() -> Bool
+    func validateFields(type: SignUpFields) -> Bool
 }
 
 class SignUpViewModelImplementation: SignUpViewModel {
@@ -33,7 +33,17 @@ class SignUpViewModelImplementation: SignUpViewModel {
         view?.showLoader()
     }
     
-    func validateFields() -> Bool {
-        return (!email.isEmpty && email.isValidEmail()) && (!password.isEmpty && password.isValidPassword())
+    func validateFields(type: SignUpFields) -> Bool {
+        switch type {
+        case .email:
+            return !email.isEmpty && email.isValidEmail()
+        case .password:
+            return !password.isEmpty && password.isValidPassword()
+        }
     }
+}
+
+enum SignUpFields {
+    case email
+    case password
 }

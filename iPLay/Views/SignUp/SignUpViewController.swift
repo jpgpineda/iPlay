@@ -9,10 +9,9 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var TestTextField: FloatingLabeledTextField!
+    @IBOutlet weak var emailTextField: FloatingLabeledTextField!
     @IBOutlet weak var signUpButton: UIButton!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordTextField: FloatingLabeledTextField!
     var viewModel: SignUpViewModel
     
     init(viewModel: SignUpViewModel) {
@@ -29,7 +28,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        TestTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -39,7 +37,9 @@ class SignUpViewController: UIViewController {
     }
     
     func validateFields() {
-        signUpButton.isEnabled = viewModel.validateFields()
+        emailTextField.isValid = viewModel.validateFields(type: .email)
+        passwordTextField.isValid = viewModel.validateFields(type: .password)
+        //signUpButton.isEnabled = viewModel.validateFields()
     }
 }
 
@@ -55,18 +55,21 @@ extension SignUpViewController: SignUpView {
 extension SignUpViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         view.endEditing(true)
-        TestTextField.isValid = false
         return true
     }
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
-            guard let text = emailTextField.text else {
+            guard let text = emailTextField.text,
+                  !text.isEmpty else {
+                viewModel.email = ""
                 return false
             }
             viewModel.email = text
         } else {
-            guard let text = passwordTextField.text else {
+            guard let text = passwordTextField.text,
+                  !text.isEmpty else {
+                viewModel.password = ""
                 return false
             }
             viewModel.password = text
